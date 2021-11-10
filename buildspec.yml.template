@@ -1,0 +1,15 @@
+version: 0.2
+
+env:
+  secrets-manager:
+    HCLOUD_TOKEN: "${secret}:hcloud_token"
+    PRITUNL_TOKEN: "${secret}:pritunl_token"
+    PRITUNL_SECRET: "${secret}:pritunl_secret"
+
+phases:
+  build:
+    commands:
+      - echo "$HCLOUD_TOKEN" > env.tfvars
+      - echo "$PRITUNL_TOKEN" >> env.tfvars
+      - echo "$PRITUNL_SECRET" >> env.tfvars
+      - echo "test"

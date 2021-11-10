@@ -9,6 +9,7 @@ output "environment" {
       aws_default_subnet.default_az3.id
     ]
     state_bucket = element(split(":",resource.aws_s3_bucket.terraform-state.arn),length(split(":",resource.aws_s3_bucket.terraform-state.arn))-1)
+    secret = element(split(":",resource.aws_secretsmanager_secret.pipeline.arn),length(split(":",resource.aws_secretsmanager_secret.pipeline.arn))-1)
     pipelines = {
       terraform = element(split(":",resource.aws_codebuild_project.pipeline-build.arn),length(split(":",resource.aws_codebuild_project.pipeline-build.arn))-1)
     }

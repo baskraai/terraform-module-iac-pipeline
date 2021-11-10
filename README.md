@@ -10,7 +10,7 @@ An terraform module that deploys a Terraform pipeline in AWS
 
 ```hcl
 module "iac-pipeline" {
-  source = "github.com/baskraai/terraform-module-iac-pipeline?ref=v0.0.1"
+  source = "github.com/baskraai/terraform-module-iac-pipeline?ref=v0.0.2"
 
   name = "IaC-Pipeline"
   branch = "master"

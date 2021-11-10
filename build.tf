@@ -139,6 +139,7 @@ resource "aws_codebuild_project" "pipeline-build" {
     git_submodules_config {
       fetch_submodules = true
     }
+    buildspec = templatefile("${path.module}/buildspec.yml.template",{ secret = element(split(":",resource.aws_secretsmanager_secret.pipeline.arn),length(split(":",resource.aws_secretsmanager_secret.pipeline.arn))-1) } )
   }
 
   source_version = var.branch
@@ -156,6 +157,7 @@ resource "aws_codebuild_project" "pipeline-build" {
       aws_default_security_group.default.id
     ]
   }
+
 
   tags = {
     terraform = "true"
